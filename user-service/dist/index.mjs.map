@@ -1,0 +1,1 @@
+{"version":3,"sources":["../src/server.ts","../src/index.ts"],"sourcesContent":["export function startServer() {\n    console.log(\"tanmay shirbhayye what are you doing\")\n}","import { startServer } from \"./server\";\n\nstartServer();"],"mappings":"AAAO,SAASA,GAAc,CAC1B,QAAQ,IAAI,sCAAsC,CACtD,CCAAC,EAAY","names":["startServer","startServer"]}
