@@ -7,8 +7,8 @@ app.use(express.static("public"));
 
 console.log("server is start")
 
-import { router } from "./core/routes/router";
+import { router } from "./routes/user.router";
 
-app.use("", router);
+app.use("api/v1/user", router);
 
 export default app;

@@ -1,8 +1,9 @@
 import dotenv from 'dotenv';
 dotenv.config();
 import app from "./app"
+import { mongoDBConnection } from './repositories/user.repositories';
 
-
+mongoDBConnection()
 
 app.listen(process.env.PORT, () => {
 
