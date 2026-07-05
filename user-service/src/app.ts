@@ -7,6 +7,8 @@ app.use(express.static("public"));
 
 console.log("server is start")
 
+import { router } from "./core/routes/router";
 
+app.use("", router);
 
 export default app;
