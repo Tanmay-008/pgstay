@@ -1,1 +1,0 @@
-{"version":3,"sources":["../src/index.ts"],"sourcesContent":["import dotenv from 'dotenv';\ndotenv.config();\n\nif (!process.env.PORT) {\n    throw new Error('❌ CRITICAL: PORT is not defined in .env file');\n}\nimport app from \"./app\"\n\n"],"mappings":"AAAA,OAAOA,MAAY,SACnBA,EAAO,OAAO,EAEd,GAAI,CAAC,QAAQ,IAAI,KACb,MAAM,IAAI,MAAM,mDAA8C","names":["dotenv"]}
