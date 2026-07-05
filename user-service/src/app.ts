@@ -8,7 +8,10 @@ app.use(express.static("public"));
 console.log("server is start")
 
 import { router } from "./routes/user.router";
+import { errorMiddleware } from "./middleware/error.middleware";
 
-app.use("api/v1/user", router);
+app.use("/api/v1/user", router);
+
+app.use(errorMiddleware as express.ErrorRequestHandler);
 
 export default app;
