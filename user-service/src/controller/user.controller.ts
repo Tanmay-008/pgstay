@@ -22,15 +22,15 @@ export const login = AsyncError(async (req: any, res: any, next: any) => {
     };
 
     const options = {
-        httpOnly: true, // Prevents client-side JS from reading the cookie
-        secure: process.env.NODE_ENV === "production", // Only send over HTTPS in production
+        httpOnly: true,
+        secure: process.env.NODE_ENV === "production",
     };
 
     res.status(200)
-    .cookie("token", token, options)
-    .json(
-        new ApiResponse(200, { user: userResponse, token }, "user login successfully")
-    );
+        .cookie("token", token, options)
+        .json(
+            new ApiResponse(200, { user: userResponse, token }, "user login successfully")
+        );
 });
 
 export const register = AsyncError(async (req: any, res: any, next: any) => {
