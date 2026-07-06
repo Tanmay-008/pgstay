@@ -1,10 +1,36 @@
-import { userRegister } from "../service/user.service"
+import { userRegister, userLogin } from "../service/user.service"
 import { UserResponse } from "../types/type";
 import { AsyncError } from "../utils/AsyncError";
 import { ApiResponse } from "../utils/ApiResponse";
+import { generateToken } from "../service/jwt.service";
 
 export const login = AsyncError(async (req: any, res: any, next: any) => {
+    const user = await userLogin(req.body);
 
+    const token = generateToken({
+        userId: user._id.toString(),
+        userName: user.userName,
+        email: user.email
+    });
+
+    const userResponse: UserResponse = {
+        id: user._id.toString(),
+        userName: user.userName,
+        fullName: user.fullName,
+        email: user.email,
+        phoneNumber: user.phoneNumber
+    };
+
+    const options = {
+        httpOnly: true, // Prevents client-side JS from reading the cookie
+        secure: process.env.NODE_ENV === "production", // Only send over HTTPS in production
+    };
+
+    res.status(200)
+    .cookie("token", token, options)
+    .json(
+        new ApiResponse(200, { user: userResponse, token }, "user login successfully")
+    );
 });
 
 export const register = AsyncError(async (req: any, res: any, next: any) => {

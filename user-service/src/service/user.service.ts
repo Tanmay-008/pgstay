@@ -1,16 +1,25 @@
 import { user } from "../types/type"
 import { UserModel } from "../model/user.model";
-import { encryptData } from "../utils/security";
+import { encryptData, compareData } from "../utils/security";
 import { ApiError } from "../utils/ApiError";
 
 type UserLoginData = {
     userName: string,
-    password: string,
-    email: string,
+    password: string
 }
 
 export const userLogin = async (data: UserLoginData) => {
+    const user = await UserModel.findOne({ userName: data.userName });
+    if (!user) {
+        throw new ApiError(404, "User not found");
+    }
 
+    const isPasswordValid = await compareData(data.password, user.password);
+    if (!isPasswordValid) {
+        throw new ApiError(401, "Invalid password");
+    }
+
+    return user;
 }
 
 export const userRegister = async (data: user) => {
