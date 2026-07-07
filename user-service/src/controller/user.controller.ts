@@ -29,7 +29,7 @@ export const login = AsyncError(async (req: any, res: any, next: any) => {
     res.status(200)
         .cookie("token", token, options)
         .json(
-            new ApiResponse(200, { user: userResponse, token }, "user login successfully")
+            new ApiResponse(200, { user: userResponse }, "user login successfully")
         );
 });
 
