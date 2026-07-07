@@ -20,7 +20,7 @@ const route=createBrowserRouter([
     element: <SignInForm />, 
   },
   {
-    path: "/singup",
+    path: "/signup",
     element: <SignupFormDemo />, 
   },
   {
