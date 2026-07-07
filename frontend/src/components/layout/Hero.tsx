@@ -98,7 +98,7 @@ export function Hero() {
   //   const dispatch=useDispatch();
 
   // console.log(count);
-  
+
   return (
     <div className="relative flex items-center justify-center h-[680px] mx-6 my-12 rounded-2xl overflow-hidden border border-neutral-800/30">
       <DottedGlowBackground
@@ -120,7 +120,7 @@ export function Hero() {
       <div className="relative z-10 flex flex-col items-center justify-center text-center px-6 max-w-2xl">
         {/* Title */}
         <motion.div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-          <LayoutTextFlip text="Welcome to " words={["UrbanNest"]} />
+          <LayoutTextFlip text="Welcome to " words={["pgstay"]} />
         </motion.div>
 
         {/* Subtitle */}
@@ -135,7 +135,7 @@ export function Hero() {
        Increment
       </button> */}
 
-        
+
 
         {/* Button center me niche */}
         {/* <div className="mt-8 flex justify-center">
@@ -153,14 +153,14 @@ export function Hero() {
             transition={{ type: "spring", stiffness: 300, damping: 12 }}
           >
             <Link to="/rooms">
-            <HoverBorderGradient
-              containerClassName="rounded-full"
-              as="button"
-              className="relative dark:bg-black bg-white text-black dark:text-white px-10 py-4 text-lg font-semibold shadow-md transition-all duration-300 
+              <HoverBorderGradient
+                containerClassName="rounded-full"
+                as="button"
+                className="relative dark:bg-black bg-white text-black dark:text-white px-10 py-4 text-lg font-semibold shadow-md transition-all duration-300 
               hover:shadow-[0_0_25px_rgba(56,189,248,0.5)] hover:bg-gradient-to-r hover:from-sky-500 hover:to-indigo-500 hover:text-white"
-            >
-              <span>Explore Rooms</span>
-            </HoverBorderGradient>
+              >
+                <span>Explore Rooms</span>
+              </HoverBorderGradient>
             </Link>
 
             {/* <HoverBorderGradient
