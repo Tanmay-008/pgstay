@@ -1,9 +1,10 @@
 import axios, { type AxiosRequestConfig, type AxiosResponse } from "axios";
 
 const axiosConfig = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL || "/api/v1",
+  baseURL: import.meta.env.VITE_API_BASE_URL || "http://localhost:3000/api/v1",
   timeout: 15000,
   responseType: "json",
+  withCredentials: true,
 });
 
 
