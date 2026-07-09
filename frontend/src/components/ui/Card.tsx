@@ -516,8 +516,7 @@ import { Button } from "../ui/Button";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "../../lib/utils";
 
-/* -------------------- Types -------------------- */
-type SwapCardMode = "product" | "detail";
+
 
 type BaseImage = {
   thumbnail: string;

@@ -4,12 +4,14 @@ WORKDIR /app
 
 RUN corepack enable
 
-RUN pnpm config set only-built-dependencies esbuild
+COPY package.json pnpm-lock.yaml ./
+
+
+RUN printf "packages:\n  - '.'\nallowBuilds:\n  esbuild: true\n" > pnpm-workspace.yaml
 
 RUN pnpm install --frozen-lockfile
 
 COPY . .
-
 RUN pnpm run build
 
 FROM node:22-alpine
@@ -25,3 +27,5 @@ USER node
 EXPOSE 3000
 
 CMD ["serve", "-s", "dist", "-l", "3000"]
+
+
