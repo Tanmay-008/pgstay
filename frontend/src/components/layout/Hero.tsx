@@ -3,9 +3,6 @@ import { motion } from "motion/react";
 import { LayoutTextFlip } from "../ui/layout-text-flip";
 import { HoverBorderGradient } from "../ui/hover-border-gradient";
 import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import type { RootState } from "@/stores/store";
-import { addUserInfo } from "@/features/user/userSlice";
 
 // // export function Hero(){
 // //     return (

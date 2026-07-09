@@ -1,4 +1,4 @@
-import { createSlice ,nanoid} from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit'
 
 
 const initialState = {
@@ -34,8 +34,8 @@ export const userSlice  = createSlice({
         //     state.UserInfo=state.UserInfo=user._id !== action.payload);
         // },
 
-        updateUserInfo:(state,action)=>{},
-        fetchUserInfo:(state,action)=>{}
+        updateUserInfo:(_state, _action)=>{},
+        fetchUserInfo:(_state, _action)=>{}
     }
 })
 
