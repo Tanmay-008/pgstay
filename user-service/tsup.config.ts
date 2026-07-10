@@ -21,5 +21,6 @@ export default defineConfig({
     sourcemap: true,      // Production error logs (stack traces) ko exact TS files se map karne ke liye
 
     // 7. ESM Environment Shims
-    shims: true,          // ESM me __dirname aur __filename ko trace karne ke liye compatibility inject karega
+    shims: true,
+    // ESM me __dirname aur __filename ko trace karne ke liye compatibility inject karega
 });

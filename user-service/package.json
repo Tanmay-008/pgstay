@@ -2,12 +2,13 @@
   "name": "user-service",
   "version": "1.0.0",
   "description": "this is the user-service for pgstay",
+  "packageManager": "pnpm@11.10.0",
   "main": "index.js",
   "scripts": {
     "dev": "tsx watch src/index.ts",
     "type-check": "tsc",
-    "build": "tsup",
-    "start": "node dist/index.js"
+    "build": "tsup src/index.ts --format esm",
+    "start": "node --env-file=.env dist/index.mjs"
   },
   "keywords": [],
   "author": "",
