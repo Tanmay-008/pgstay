@@ -16,7 +16,8 @@ export const login = AsyncError(async (req: any, res: any, next: any) => {
     const userResponse: UserResponse = {
         id: user._id.toString(),
         userName: user.userName,
-        fullName: user.fullName,
+        firstName: user.firstName,
+        lastName: user.lastName,
         email: user.email,
         phoneNumber: user.phoneNumber
     };
@@ -27,10 +28,10 @@ export const login = AsyncError(async (req: any, res: any, next: any) => {
     };
 
     res.status(200)
-    .cookie("token", token, options)
-    .json(
-        new ApiResponse(200, { user: userResponse, token }, "user login successfully")
-    );
+        .cookie("token", token, options)
+        .json(
+            new ApiResponse(200, { user: userResponse, token }, "user login successfully")
+        );
 });
 
 export const register = AsyncError(async (req: any, res: any, next: any) => {
@@ -39,7 +40,8 @@ export const register = AsyncError(async (req: any, res: any, next: any) => {
     const userResponse: UserResponse = {
         id: user._id.toString(),
         userName: user.userName,
-        fullName: user.fullName,
+        firstName: user.firstName,
+        lastName: user.lastName,
         email: user.email,
         phoneNumber: user.phoneNumber
     };
