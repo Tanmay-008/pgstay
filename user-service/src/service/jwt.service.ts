@@ -12,27 +12,54 @@ const privateKey = privateKeyRaw.replace(/\\n/g, '\n');
 const publicKey = publicKeyRaw.replace(/\\n/g, '\n');
 interface JwtPayload {
     userId: string;
-    userName: string;
-    email?: string;
+    role: string;
 }
 
-export const generateToken = (payload: JwtPayload): string => {
+interface IdTokenPayload {
+    userName: string;
+    email: string;
+    fullName: string;
+    phoneNumber: string;
+}
+
+export const generateAccessToken = (payload: AccessTokenPayload): string => {
     try {
         return jwt.sign(payload, privateKey, {
             algorithm: 'RS256',
-            expiresIn: '1h'
+            expiresIn: '15m' // Access token usually has shorter expiry (e.g. 15m)
         });
     } catch (error) {
-        throw new ApiError(500, "Error generating authentication token");
+        throw new ApiError(500, "Error generating access token");
     }
 };
 
-export const verifyToken = (token: string): JwtPayload => {
+export const generateIdToken = (payload: IdTokenPayload): string => {
+    try {
+        return jwt.sign(payload, privateKey, {
+            algorithm: 'RS256',
+            expiresIn: '1d' // ID token can match session length or have longer/custom expiry
+        });
+    } catch (error) {
+        throw new ApiError(500, "Error generating ID token");
+    }
+};
+
+export const verifyAccessToken = (token: string): AccessTokenPayload => {
     try {
         return jwt.verify(token, publicKey, {
             algorithms: ['RS256']
-        }) as JwtPayload;
+        }) as AccessTokenPayload;
     } catch (error) {
-        throw new ApiError(401, "Invalid or expired token");
+        throw new ApiError(401, "Invalid or expired access token");
+    }
+};
+
+export const verifyIdToken = (token: string): IdTokenPayload => {
+    try {
+        return jwt.verify(token, publicKey, {
+            algorithms: ['RS256']
+        }) as IdTokenPayload;
+    } catch (error) {
+        throw new ApiError(401, "Invalid or expired ID token");
     }
 };
