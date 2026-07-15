@@ -2,15 +2,21 @@ import { userRegister, userLogin } from "../service/user.service"
 import { UserResponse } from "../types/type";
 import { AsyncError } from "../utils/AsyncError";
 import { ApiResponse } from "../utils/ApiResponse";
-import { generateToken } from "../service/jwt.service";
+import { generateAccessToken, generateIdToken } from "../service/jwt.service";
 
-export const login = AsyncError(async (req: any, res: any, next: any) => {
+export const login = AsyncError(async (req: any, res: any) => {
     const user = await userLogin(req.body);
 
-    const token = generateToken({
+    const accessToken = generateAccessToken({
         userId: user._id.toString(),
+        role: user.role || "user"
+    });
+
+    const idToken = generateIdToken({
         userName: user.userName,
-        email: user.email
+        email: user.email,
+        fullName: user.fullName,
+        phoneNumber: user.phoneNumber
     });
 
     const userResponse: UserResponse = {
@@ -18,7 +24,8 @@ export const login = AsyncError(async (req: any, res: any, next: any) => {
         userName: user.userName,
         fullName: user.fullName,
         email: user.email,
-        phoneNumber: user.phoneNumber
+        phoneNumber: user.phoneNumber,
+        role: user.role || "user"
     };
 
     const options = {
@@ -27,13 +34,14 @@ export const login = AsyncError(async (req: any, res: any, next: any) => {
     };
 
     res.status(200)
-        .cookie("token", token, options)
+        .cookie("accessToken", accessToken, options)
+        .cookie("idToken", idToken, options)
         .json(
             new ApiResponse(200, { user: userResponse }, "user login successfully")
         );
 });
 
-export const register = AsyncError(async (req: any, res: any, next: any) => {
+export const register = AsyncError(async (req: any, res: any) => {
     const user = await userRegister(req.body);
 
     const userResponse: UserResponse = {
@@ -41,7 +49,8 @@ export const register = AsyncError(async (req: any, res: any, next: any) => {
         userName: user.userName,
         fullName: user.fullName,
         email: user.email,
-        phoneNumber: user.phoneNumber
+        phoneNumber: user.phoneNumber,
+        role: user.role || "user"
     };
 
     res.status(201).json(
