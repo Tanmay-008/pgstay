@@ -1,12 +1,16 @@
 import jwt from 'jsonwebtoken';
-import fs from 'fs';
-import path from 'path';
 import { ApiError } from '../utils/ApiError';
 
-const privateKey = fs.readFileSync(path.join(process.cwd(), 'private.pem'), 'utf8');
-const publicKey = fs.readFileSync(path.join(process.cwd(), 'public.pem'), 'utf8');
+const privateKeyRaw = process.env.PRIVATE_KEY;
+const publicKeyRaw = process.env.PUBLIC_KEY;
 
-interface AccessTokenPayload {
+if (!privateKeyRaw || !publicKeyRaw) {
+    throw new Error("FATAL: PRIVATE_KEY or PUBLIC_KEY is missing from environment variables.");
+}
+
+const privateKey = privateKeyRaw.replace(/\\n/g, '\n');
+const publicKey = publicKeyRaw.replace(/\\n/g, '\n');
+interface JwtPayload {
     userId: string;
     role: string;
 }

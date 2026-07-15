@@ -32,7 +32,8 @@ export const userRegister = async (data: user) => {
 
     const user = await UserModel.create({
         userName: data.userName,
-        fullName: data.fullName,
+        firstName: data.firstName,
+        lastName: data.lastName,
         email: data.email,
         phoneNumber: data.phoneNumber,
         password: hashedPassword,

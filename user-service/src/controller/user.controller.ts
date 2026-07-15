@@ -22,7 +22,8 @@ export const login = AsyncError(async (req: any, res: any) => {
     const userResponse: UserResponse = {
         id: user._id.toString(),
         userName: user.userName,
-        fullName: user.fullName,
+        firstName: user.firstName,
+        lastName: user.lastName,
         email: user.email,
         phoneNumber: user.phoneNumber,
         role: user.role || "user"
@@ -47,7 +48,8 @@ export const register = AsyncError(async (req: any, res: any) => {
     const userResponse: UserResponse = {
         id: user._id.toString(),
         userName: user.userName,
-        fullName: user.fullName,
+        firstName: user.firstName,
+        lastName: user.lastName,
         email: user.email,
         phoneNumber: user.phoneNumber,
         role: user.role || "user"

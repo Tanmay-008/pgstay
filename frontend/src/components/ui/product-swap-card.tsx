@@ -1,7 +1,6 @@
 "use client";
 
 import * as React from "react";
-import { Link } from "react-router-dom"; // ✅ use this instead of next/link
 import { ChevronDown } from "lucide-react";
 import { motion, AnimatePresence, type MotionProps } from "framer-motion";
 import { Button } from "@/components/ui/Button";
@@ -134,8 +133,8 @@ const ProductSwapCard = React.forwardRef<HTMLDivElement, ProductSwapCardProps>(
                       activeIndex === index
                         ? 0
                         : index < activeIndex
-                        ? "-100%"
-                        : "100%",
+                          ? "-100%"
+                          : "100%",
                   }}
                   transition={{
                     opacity: { duration: 0.5, ease: "easeInOut" },
@@ -185,7 +184,7 @@ const ProductSwapCard = React.forwardRef<HTMLDivElement, ProductSwapCardProps>(
               {product.excerpt}
             </p>
             <img
-              href={`/product/${product.slug}`}
+              src={`/product/${product.slug}`}
               className="text-sm inline-block font-medium text-primary transition-colors duration-300 after:content-['_↗'] hover:text-primary/80"
             >
               {product.actionLabel || "Product details"}
@@ -225,4 +224,4 @@ const ProductSwapCard = React.forwardRef<HTMLDivElement, ProductSwapCardProps>(
 
 ProductSwapCard.displayName = "ProductSwapCard";
 
-export {ProductSwapCard};
+export { ProductSwapCard };

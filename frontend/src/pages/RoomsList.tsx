@@ -14,15 +14,13 @@ import { ModeToggle } from "@/components/ui/mode-toggle.tsx";
 import { Link } from "react-router-dom";
 import SearchBar from "@/components/ui/SearchBar";
 import { SwapCard } from "@/components/ui/Card";
-import {  featchRooms } from "@/features/room/roomApi";
-import { useDispatch, useSelector } from "react-redux";
+import { featchRooms } from "@/features/room/roomApi";
+import { useDispatch, } from "react-redux";
 import { addRoomInfo } from "@/features/room/roomSlice";
 
 function RoomsList() {
   const [rooms, setRooms] = useState<Array<any>>([]);
-  const [SearchInput, setSearchInput] = useState<string>("");
   const dispatch = useDispatch();
-  const room = useSelector((state: any) => state.room.roomInfo);
   const navItems = [
     { name: "Features", link: "#features" },
     { name: "Pricing", link: "#pricing" },
