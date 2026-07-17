@@ -7,14 +7,11 @@ import {
   IconBrandGithub,
   IconBrandGoogle,
 } from "@tabler/icons-react";
-import { Link, useNavigate } from "react-router-dom";
-import { axiosAPI } from "@/lib/axios";
-import { useDispatch } from "react-redux";
-import { addUserInfo } from "@/features/user/userSlice";
+import { Link } from "react-router-dom";
+import { useLogin } from "@/hooks/useLogin";
 
 export default function SignInForm() {
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const { login, loading } = useLogin();
 
   const [data, setData] = useState({
     userName: "",
@@ -31,13 +28,7 @@ export default function SignInForm() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    try {
-      const res = await axiosAPI.post("/user/login", data);
-      dispatch(addUserInfo(res.data));
-      navigate("/");
-    } catch (error) {
-      console.error("Login failed", error);
-    }
+    await login(data);
   };
 
   return (
