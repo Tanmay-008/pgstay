@@ -13,10 +13,9 @@ export const login = AsyncError(async (req: any, res: any) => {
     });
 
     const idToken = generateIdToken({
-        userName: user.userName,
-        email: user.email,
-        fullName: user.fullName,
-        phoneNumber: user.phoneNumber
+        userId: user._id.toString(),
+        role: user.role || "user",
+        email: user.email
     });
 
     const userResponse: UserResponse = {
@@ -38,7 +37,7 @@ export const login = AsyncError(async (req: any, res: any) => {
         .cookie("accessToken", accessToken, options)
         .cookie("idToken", idToken, options)
         .json(
-            new ApiResponse(200, { user: userResponse }, "user login successfully")
+            new ApiResponse(200, { user: userResponse, idToken }, "user login successfully")
         );
 });
 

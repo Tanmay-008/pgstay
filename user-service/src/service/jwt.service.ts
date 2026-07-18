@@ -10,16 +10,20 @@ if (!privateKeyRaw || !publicKeyRaw) {
 
 const privateKey = privateKeyRaw.replace(/\\n/g, '\n');
 const publicKey = publicKeyRaw.replace(/\\n/g, '\n');
-interface JwtPayload {
-    userId: string;
-    role: string;
-}
+// interface JwtPayload {
+//     userId: string;
+//     role: string;
+// }
 
 interface IdTokenPayload {
-    userName: string;
+    userId: string;
+    role: string;
     email: string;
-    fullName: string;
-    phoneNumber: string;
+}
+
+interface AccessTokenPayload {
+    userId: string;
+    role: string;
 }
 
 export const generateAccessToken = (payload: AccessTokenPayload): string => {
