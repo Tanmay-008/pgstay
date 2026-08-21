@@ -49,10 +49,7 @@ function App() {
             <NavbarLogo />
             <NavItems items={navItems} />
             <div className="flex items-center gap-4">
-              {/* <Link to='/login'>  */}
               <NavbarButton variant="secondary" as={Link} to="/login">Login</NavbarButton>
-              {/* </Link> */}
-              {/* <NavbarButton variant="primary">Book a call</NavbarButton> */}
               <NavbarButton variant="secondary">        <ModeToggle /></NavbarButton>
             </div>
           </NavBody>
