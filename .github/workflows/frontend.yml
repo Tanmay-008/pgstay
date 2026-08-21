@@ -34,5 +34,5 @@ jobs:
                 context: ./frontend
                 push: true
                 tags: |
-                  ${{ secrets.DOCKERHUB_USERNAME }}/pgstay:frontend-${{ github.sha }}
-                  ${{ secrets.DOCKERHUB_USERNAME }}/pgstay:frontend-latest
+                  ${{ secrets.DOCKERHUB_USERNAME }}/pgstay-frontend:${{ github.sha }}
+                  ${{ secrets.DOCKERHUB_USERNAME }}/pgstay-frontend:latest
