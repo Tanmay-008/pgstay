@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 import { useLogin } from "@/hooks/useLogin";
 
 export default function SignInForm() {
-  const { login, loading } = useLogin();
+  const { login } = useLogin();
 
   const [data, setData] = useState({
     userName: "",
