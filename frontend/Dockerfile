@@ -12,7 +12,7 @@ RUN printf "packages:\n  - '.'\nallowBuilds:\n  esbuild: true\n" > pnpm-workspac
 RUN pnpm install --frozen-lockfile
 
 COPY . .
-RUN pnpm run build
+RUN pnpm run build:prod
 
 FROM node:22-alpine
 
