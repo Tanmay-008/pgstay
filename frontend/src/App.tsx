@@ -87,13 +87,6 @@ function App() {
                     Login
                   </NavbarButton>
                 </Link>
-                {/* <NavbarButton
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  variant="primary"
-                  className="w-full"
-                >
-                  Login
-                </NavbarButton> */}
                 <NavbarButton
                   onClick={() => setIsMobileMenuOpen(false)}
                   variant="primary"
