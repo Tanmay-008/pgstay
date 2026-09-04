@@ -101,9 +101,9 @@ function App() {
 
       </div>
 
-      <div className="pl-5 pt-6 pr-5">
+      {/* <div className="pl-5 pt-6 pr-5">
         <Hero />
-      </div>
+      </div> */}
 
       <div></div>
     </>
