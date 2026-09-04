@@ -37,7 +37,7 @@ export function Hero() {
 
         {/* Subtitle */}
         <p className="mt-4 text-base sm:text-lg text-neutral-600 dark:text-neutral-400">
-          {/* Find your perfect space with verified rooms and trusted hosts — start exploring now! */}
+          Find your perfect space with verified rooms and trusted hosts — start exploring now!
         </p>
 
         {/* <h1>
