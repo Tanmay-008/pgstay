@@ -1,6 +1,6 @@
 import { ThemeProvider } from "./components/ui/theme-provider.tsx"
 import { ModeToggle } from "./components/ui/mode-toggle.tsx"
-// import { Hero } from "./components/layout/Hero.tsx";
+import { Hero } from "./components/layout/Hero.tsx";
 import {
   Navbar,
   NavBody,
@@ -101,9 +101,9 @@ function App() {
 
       </div>
 
-      {/* <div className="pl-5 pt-6 pr-5">
+      <div className="pl-5 pt-6 pr-5">
         <Hero />
-      </div> */}
+      </div>
 
       <div></div>
     </>
