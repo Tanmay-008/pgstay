@@ -1,6 +1,6 @@
 import { ThemeProvider } from "./components/ui/theme-provider.tsx"
 import { ModeToggle } from "./components/ui/mode-toggle.tsx"
-import { Hero } from "./components/layout/Hero.tsx";
+// import { Hero } from "./components/layout/Hero.tsx";
 import {
   Navbar,
   NavBody,
