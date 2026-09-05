@@ -34,5 +34,4 @@ jobs:
                 context: ./user-service
                 push: true
                 tags: |
-                  ${{ secrets.DOCKERHUB_USERNAME }}/pgstay:user-service-${{ github.sha }}
-                  ${{ secrets.DOCKERHUB_USERNAME }}/pgstay:user-service-latest
+                  ${{ secrets.DOCKERHUB_USERNAME }}/pgstay-user-service:1.0.${{ github.run_number }}
