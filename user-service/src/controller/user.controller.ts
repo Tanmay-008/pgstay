@@ -3,9 +3,14 @@ import { UserResponse } from "../types/type";
 import { AsyncError } from "../utils/AsyncError";
 import { ApiResponse } from "../utils/ApiResponse";
 import { generateAccessToken, generateIdToken } from "../service/jwt.service";
+import { ApiError } from "../utils/ApiError";
 
 export const login = AsyncError(async (req: any, res: any) => {
-    const user = await userLogin(req.body);
+    const { userName, password } = req.body;
+    if (!userName || !password) {
+        throw new ApiError(400, "username and password are required");
+    }
+    const user = await userLogin({ userName, password });
 
     const accessToken = generateAccessToken({
         userId: user._id.toString(),
