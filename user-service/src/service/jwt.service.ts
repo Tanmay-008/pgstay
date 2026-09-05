@@ -30,7 +30,7 @@ export const generateAccessToken = (payload: AccessTokenPayload): string => {
     try {
         return jwt.sign(payload, privateKey, {
             algorithm: 'RS256',
-            expiresIn: '15m' // Access token usually has shorter expiry (e.g. 15m)
+            expiresIn: '15m'
         });
     } catch (error) {
         throw new ApiError(500, "Error generating access token");
